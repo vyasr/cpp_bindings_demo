@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  cpp_bindings_demo:
+    build:
+      context: docker/
+    volumes:
+      - "./code:/code"
+      - "./demo.py:/demo.py"
+      - "./demo.sh:/demo.sh"
+    tty: true
+    stdin_open: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
