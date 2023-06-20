@@ -15,7 +15,7 @@ int main() {
     thrust::sequence(thrust::device, x.begin(), x.end(), 0);
     thrust::sequence(thrust::device, y.begin(), y.end(), 1);
 
-    saxpy(a, x, y);
+    saxpy(a, x.data().get(), x.data().get() + x.size(), y.data().get(), y.data().get());
 
     thrust::host_vector<float> out = y;
     for (float const i: out) {
