@@ -1,0 +1,12 @@
+[build-system]
+build-backend = "scikit_build_core.build"
+requires = [
+    "cython>=0.29,<0.30",
+    "scikit-build-core",
+]
+
+[project]
+name = "bindings"
+version = "1.0.0"
+description = "Demonstrate Python-C++ bindings"
+requires-python = ">=3.9"
