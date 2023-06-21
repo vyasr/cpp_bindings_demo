@@ -32,22 +32,28 @@ set_target_properties(
 find_package(CUDAToolkit REQUIRED)
 
 find_package(Thrust REQUIRED CONFIG HINTS ${CUDAToolkit_LIBRARY_DIR}/cmake/thrust)
-thrust_create_target(Thrust)
-target_link_libraries(saxpy Thrust)
+target_link_libraries(saxpy)
 
 set(SAXPY_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-constexpr)
 target_compile_options(
   saxpy PRIVATE "$<$<COMPILE_LANGUAGE:CUDA>:${SAXPY_CUDA_FLAGS}>"
 )
 
-add_executable(
-    example
-    src/main.cu
+export(TARGETS saxpy FILE "${PROJECT_BINARY_DIR}/SaxpyConfig.cmake")
+
+# Install the library and header files
+install(TARGETS saxpy
+    EXPORT SaxpyTargets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
 )
 
-target_include_directories(
-    example
-    PUBLIC "$<BUILD_INTERFACE:${SAXPY_SOURCE_DIR}/include>"
-    INTERFACE "$<INSTALL_INTERFACE:include>"
+install(DIRECTORY include/
+    DESTINATION include
 )
-target_link_libraries(example Thrust saxpy)
+
+# Install the CMake config file
+install(EXPORT SaxpyTargets
+    FILE SaxpyConfig.cmake
+    DESTINATION lib/cmake/saxpy
+)

@@ -1,24 +1,11 @@
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../cpp" "${CMAKE_CURRENT_BINARY_DIR}/cpp")
+cmake_minimum_required(VERSION 3.15)
+project(${SKBUILD_PROJECT_NAME} LANGUAGES CXX)
 
-add_custom_command(
-  OUTPUT bindings.cxx
-  DEPENDS bindings.pyx
-  VERBATIM
-  COMMAND "${CYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/bindings.pyx" --output-file
-          "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
+find_package(
+  Python
+  COMPONENTS Interpreter Development.Module
+  REQUIRED)
 
-python_add_library(pysaxpy MODULE "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
+find_program(CYTHON "cython")
 
-target_link_libraries(pysaxpy PUBLIC saxpy)
-
-set_target_properties(
-    pysaxpy
-    PROPERTIES
-    BUILD_RPATH "\$ORIGIN"
-    INSTALL_RPATH "\$ORIGIN"
-    POSITION_INDEPENDENT_CODE ON
-    INTERFACE_POSITION_INDEPENDENT_CODE ON
-)
-
-install(TARGETS saxpy DESTINATION pysaxpy)
-install(TARGETS pysaxpy DESTINATION pysaxpy)
+add_subdirectory(pysaxpy)
