@@ -1,4 +1,4 @@
-add_subdirectory(cpp)
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../cpp" "${CMAKE_CURRENT_BINARY_DIR}/cpp")
 
 add_custom_command(
   OUTPUT bindings.cxx
@@ -7,12 +7,12 @@ add_custom_command(
   COMMAND "${CYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/bindings.pyx" --output-file
           "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
 
-python_add_library(bindings MODULE "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
+python_add_library(pysaxpy MODULE "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
 
-target_link_libraries(bindings PUBLIC saxpy)
+target_link_libraries(pysaxpy PUBLIC saxpy)
 
 set_target_properties(
-    bindings
+    pysaxpy
     PROPERTIES
     BUILD_RPATH "\$ORIGIN"
     INSTALL_RPATH "\$ORIGIN"
@@ -20,5 +20,5 @@ set_target_properties(
     INTERFACE_POSITION_INDEPENDENT_CODE ON
 )
 
-install(TARGETS saxpy DESTINATION bindings)
-install(TARGETS bindings DESTINATION bindings)
+install(TARGETS saxpy DESTINATION pysaxpy)
+install(TARGETS pysaxpy DESTINATION pysaxpy)

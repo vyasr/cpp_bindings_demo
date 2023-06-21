@@ -6,7 +6,7 @@ requires = [
 ]
 
 [project]
-name = "bindings"
+name = "pysaxpy"
 version = "1.0.0"
 description = "Demonstrate Python-C++ bindings"
 requires-python = ">=3.9"

@@ -8,4 +8,4 @@ find_package(
 
 find_program(CYTHON "cython")
 
-add_subdirectory(bindings)
+add_subdirectory(pysaxpy)
