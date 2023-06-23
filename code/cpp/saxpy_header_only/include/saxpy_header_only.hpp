@@ -12,6 +12,6 @@ struct SaxpyFunctor {
 };
 
 template <typename Scalar, typename InputIterator, typename OutputIterator>
-void saxpy(Scalar a, InputIterator x_begin, InputIterator x_end, InputIterator y_begin, OutputIterator output_begin) {
+void saxpy_template(Scalar a, InputIterator x_begin, InputIterator x_end, InputIterator y_begin, OutputIterator output_begin) {
     thrust::transform(thrust::device, x_begin, x_end, y_begin, output_begin, SaxpyFunctor{a});
 }
