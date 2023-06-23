@@ -34,7 +34,8 @@ set_target_properties(
 find_package(CUDAToolkit REQUIRED)
 
 find_package(Thrust REQUIRED CONFIG HINTS ${CUDAToolkit_LIBRARY_DIR}/cmake/thrust)
-target_link_libraries(saxpy)
+thrust_create_target(Thrust)
+target_link_libraries(saxpy PRIVATE Thrust)
 
 set(SAXPY_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-constexpr)
 target_compile_options(
