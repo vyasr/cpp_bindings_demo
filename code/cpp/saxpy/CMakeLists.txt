@@ -38,7 +38,7 @@ set_target_properties(
     INTERFACE_POSITION_INDEPENDENT_CODE ON
 )
 
-target_link_libraries(saxpy PRIVATE Thrust)
+target_link_libraries(saxpy PRIVATE Thrust::Thrust)
 
 set(SAXPY_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-constexpr)
 target_compile_options(
@@ -107,5 +107,5 @@ if(BUILD_EXAMPLE)
         PUBLIC "$<BUILD_INTERFACE:${SAXPY_SOURCE_DIR}/include>"
         INTERFACE "$<INSTALL_INTERFACE:include>"
     )
-    target_link_libraries(example Thrust saxpy)
+    target_link_libraries(example PRIVATE Thrust::Thrust saxpy)
 endif()

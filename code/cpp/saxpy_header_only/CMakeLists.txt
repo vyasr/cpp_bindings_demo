@@ -34,7 +34,7 @@ set_target_properties(
     INTERFACE_POSITION_INDEPENDENT_CODE ON
 )
 
-target_link_libraries(saxpy_header_only INTERFACE Thrust)
+target_link_libraries(saxpy_header_only INTERFACE Thrust::Thrust)
 
 set(SAXPY_CUDA_FLAGS --expt-extended-lambda --expt-relaxed-constexpr)
 target_compile_options(
@@ -45,7 +45,8 @@ target_compile_options(
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-install(TARGETS saxpy_header_only
+get_property(thrust_aliased_target TARGET Thrust::Thrust PROPERTY ALIASED_TARGET)
+install(TARGETS saxpy_header_only ${thrust_aliased_target}
     EXPORT saxpy-header-only-targets
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
