@@ -7,6 +7,7 @@ find_package(
   REQUIRED)
 
 find_package(saxpy 1.0.0 REQUIRED)
+#find_package(saxpy_header_only 1.0.0 REQUIRED)
 
 find_program(CYTHON "cython")
 
