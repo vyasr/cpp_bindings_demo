@@ -1,3 +1,3 @@
-from .pybind_saxpy import saxpy
+from .pybind_saxpy import saxpy, saxpy_template
 
-__all__ = ["saxpy"]
+__all__ = ["saxpy", "saxpy_template"]

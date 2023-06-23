@@ -1,7 +1,7 @@
 #include <pybind11/pybind11.h>
 #include "saxpy_header_only.hpp"
 
-PYBIND11_MODULE(cpp_bindings, m) {
+PYBIND11_MODULE(cpp_bindings_header_only, m) {
     m.doc() = "pybind11 C++ bindings"; // optional module docstring
 
     m.def("saxpy_template", [](float a, long x_begin, long x_end, long y_begin, long output_begin){
