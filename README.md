@@ -11,6 +11,11 @@ It also contains a pair of (shell and Python) scripts that may be used to run th
 Assuming docker-compose is installed, the example may be run as follows:
 
 ```bash
+# Clone the project
+git clone --recurse-submodules https://github.com/vyasr/cpp_bindings_demo
+cd cpp_bindings_demo
+
+# Build and launch the Docker container
 docker-compose build
 docker-compose run cpp_bindings_demo
 
