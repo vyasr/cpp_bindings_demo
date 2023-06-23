@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.15.0 FATAL_ERROR)
+# TODO: This won't work on an arbitrary system
 set(CMAKE_CUDA_ARCHITECTURES 75)
 set(version 1.0.0)
 project(
