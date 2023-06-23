@@ -6,7 +6,7 @@ include(CMakeFindDependencyMacro)
 find_dependency(CUDAToolkit REQUIRED)
 find_dependency(Thrust REQUIRED CONFIG HINTS ${CUDAToolkit_LIBRARY_DIR}/cmake/thrust)
 
-check_required_components(saxpy)
+check_required_components(saxpy_header_only)
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(${CMAKE_FIND_PACKAGE_NAME} DEFAULT_MSG)
