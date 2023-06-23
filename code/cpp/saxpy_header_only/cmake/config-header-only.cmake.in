@@ -1,9 +1,10 @@
 @PACKAGE_INIT@
 
-include("${CMAKE_CURRENT_LIST_DIR}/saxpy-targets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/saxpy_header_only-targets.cmake")
 
 include(CMakeFindDependencyMacro)
 find_dependency(CUDAToolkit REQUIRED)
+find_dependency(Thrust REQUIRED CONFIG HINTS ${CUDAToolkit_LIBRARY_DIR}/cmake/thrust)
 
 check_required_components(saxpy)
 

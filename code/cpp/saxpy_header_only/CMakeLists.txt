@@ -55,13 +55,13 @@ install(DIRECTORY include/
 )
 
 install(EXPORT saxpy-header-only-targets
-    FILE saxpy-header-only-targets.cmake
+    FILE saxpy_header_only-targets.cmake
     NAMESPACE saxpy_header_only::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/saxpy_header_only
 )
 
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config-header-only.cmake.in
-  "${CMAKE_CURRENT_BINARY_DIR}/saxpy-header-only-config.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/saxpy_header_only-config.cmake"
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/saxpy_header_only
 )
 
@@ -73,13 +73,13 @@ set_property(TARGET saxpy_header_only APPEND PROPERTY
 )
 
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/saxpy-header-only-config-version.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/saxpy_header_only-config-version.cmake"
   VERSION "${version}"
   COMPATIBILITY AnyNewerVersion
 )
 
 install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/saxpy-header-only-config.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/saxpy-header-only-config-version.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/saxpy_header_only-config.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/saxpy_header_only-config-version.cmake"
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/saxpy_header_only
 )
