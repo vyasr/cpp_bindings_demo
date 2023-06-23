@@ -8,7 +8,7 @@ find_package(
 
 find_program(CYTHON "cython")
 
-find_package(Saxpy REQUIRED)
+find_package(saxpy 1.0.0 REQUIRED)
 
 add_custom_command(
   OUTPUT bindings.cxx
@@ -19,7 +19,7 @@ add_custom_command(
 
 python_add_library(bindings MODULE "${CMAKE_CURRENT_BINARY_DIR}/bindings.cxx")
 
-target_link_libraries(bindings PUBLIC saxpy)
+target_link_libraries(bindings PUBLIC saxpy::saxpy)
 
 set_target_properties(
     bindings
