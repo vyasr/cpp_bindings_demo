@@ -4,7 +4,7 @@
 template <typename T>
 struct SaxpyFunctor {
     SaxpyFunctor(T const a) : a(a) {}
-    T operator()(const T x, const T y) const {
+    __device__ T operator()(const T x, const T y) const {
         return a * x + y;
     }
 
