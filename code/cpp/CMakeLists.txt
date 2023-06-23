@@ -93,3 +93,17 @@ install(FILES
 
 # Export for the build dir
 export(TARGETS saxpy FILE "${PROJECT_BINARY_DIR}/saxpy-targets.cmake")
+
+option(BUILD_EXAMPLE "Build the C++ sample" OFF)
+if(BUILD_EXAMPLE)
+add_executable(
+    example
+    src/main.cu
+)
+
+target_include_directories(
+    example
+    PUBLIC "$<BUILD_INTERFACE:${SAXPY_SOURCE_DIR}/include>"
+    INTERFACE "$<INSTALL_INTERFACE:include>"
+)
+target_link_libraries(example Thrust saxpy)
