@@ -1,3 +1,3 @@
-from .pysaxpy import saxpy
+from . import cython_saxpy
 
-__all__ = ["saxpy"]
+__all__ = ["cython_saxpy"]
