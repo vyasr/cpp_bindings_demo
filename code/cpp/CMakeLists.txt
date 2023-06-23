@@ -57,7 +57,6 @@ install(DIRECTORY include/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-# Install the CMake config file
 install(EXPORT saxpy-targets
     FILE saxpy-targets.cmake
     NAMESPACE saxpy::
@@ -70,7 +69,6 @@ configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake.in
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/saxpy
 )
 
-# Export version
 set_property(TARGET saxpy PROPERTY VERSION ${version})
 string(REPLACE "." ";" VERSION_LIST "${version}")
 list(GET VERSION_LIST 0 MAJOR_VERSION)
@@ -80,7 +78,6 @@ set_property(TARGET saxpy APPEND PROPERTY
   COMPATIBLE_INTERFACE_STRING saxpy_MAJOR_VERSION
 )
 
-# generate the version file for the config file
 write_basic_package_version_file(
   "${CMAKE_CURRENT_BINARY_DIR}/saxpy-config-version.cmake"
   VERSION "${version}"
