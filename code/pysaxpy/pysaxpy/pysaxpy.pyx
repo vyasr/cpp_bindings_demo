@@ -1,4 +1,4 @@
-from . cimport _bindings
+from . cimport _saxpy
 from libc.stdint cimport uintptr_t
 
 def saxpy(a, x, y):
@@ -8,6 +8,6 @@ def saxpy(a, x, y):
     cdef const float * y_begin = <const float *> <uintptr_t> y.data.ptr
     cdef float * output_begin = <float *> <uintptr_t> y.data.ptr
 
-    _bindings.saxpy(a, x_begin, x_end, y_begin, output_begin)
+    _saxpy.saxpy(a, x_begin, x_end, y_begin, output_begin)
 
     return y

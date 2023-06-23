@@ -6,6 +6,8 @@ find_package(
   COMPONENTS Interpreter Development.Module
   REQUIRED)
 
+find_package(saxpy 1.0.0 REQUIRED)
+
 find_program(CYTHON "cython")
 
-add_subdirectory(bindings)
+add_subdirectory(pysaxpy)
