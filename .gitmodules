@@ -1,0 +1,4 @@
+[submodule "code/pysaxpy/pysaxpy/pybind_saxpy/extern/pybind11"]
+	path = code/pysaxpy/pysaxpy/pybind_saxpy/extern/pybind11
+	url = http://github.com/pybind/pybind11
+	branch = stable

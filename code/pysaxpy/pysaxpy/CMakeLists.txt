@@ -1,1 +1,2 @@
 add_subdirectory(cython_saxpy)
+add_subdirectory(pybind_saxpy)
